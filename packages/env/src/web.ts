@@ -18,7 +18,8 @@ const webEnvSchema = z.object({
 	BETTER_AUTH_SECRET: z.string(),
 
 	// Server — Optional (not needed for editor-only mode)
-	UPSTASH_REDIS_REST_URL: z.url().optional(),
+	// Use z.string().optional() for URLs that may contain placeholder values
+	UPSTASH_REDIS_REST_URL: z.string().optional(),
 	UPSTASH_REDIS_REST_TOKEN: z.string().optional(),
 	MARBLE_WORKSPACE_KEY: z.string().optional(),
 	FREESOUND_CLIENT_ID: z.string().optional(),
@@ -27,7 +28,7 @@ const webEnvSchema = z.object({
 	R2_ACCESS_KEY_ID: z.string().optional(),
 	R2_SECRET_ACCESS_KEY: z.string().optional(),
 	R2_BUCKET_NAME: z.string().optional(),
-	MODAL_TRANSCRIPTION_URL: z.url().optional(),
+	MODAL_TRANSCRIPTION_URL: z.string().optional(),
 });
 
 export type WebEnv = z.infer<typeof webEnvSchema>;
