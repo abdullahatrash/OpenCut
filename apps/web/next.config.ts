@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import { withBotId } from "botid/next/config";
 import { withContentCollections } from "@content-collections/next";
+import { withMicrofrontends } from "@vercel/microfrontends/next/config";
 
 const nextConfig: NextConfig = {
 	turbopack: {
@@ -16,7 +17,6 @@ const nextConfig: NextConfig = {
 	},
 	reactStrictMode: true,
 	productionBrowserSourceMaps: true,
-	output: "standalone",
 	images: {
 		remotePatterns: [
 			{
@@ -55,4 +55,4 @@ const nextConfig: NextConfig = {
 	},
 };
 
-export default withContentCollections(withBotId(nextConfig));
+export default withMicrofrontends(withContentCollections(withBotId(nextConfig)));
