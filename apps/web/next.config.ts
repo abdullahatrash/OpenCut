@@ -1,6 +1,5 @@
 import type { NextConfig } from "next";
 import { withBotId } from "botid/next/config";
-import { withContentCollections } from "@content-collections/next";
 import { withMicrofrontends } from "@vercel/microfrontends/next/config";
 
 const nextConfig: NextConfig = {
@@ -29,10 +28,6 @@ const nextConfig: NextConfig = {
 			},
 			{
 				protocol: "https",
-				hostname: "images.marblecms.com",
-			},
-			{
-				protocol: "https",
 				hostname: "lh3.googleusercontent.com",
 			},
 			{
@@ -55,4 +50,4 @@ const nextConfig: NextConfig = {
 	},
 };
 
-export default withMicrofrontends(withContentCollections(withBotId(nextConfig)));
+export default withMicrofrontends(withBotId(nextConfig));
