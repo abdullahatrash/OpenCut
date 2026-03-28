@@ -24,12 +24,14 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { ShortcutsDialog } from "./dialogs/shortcuts-dialog";
 import Image from "next/image";
 import { cn } from "@/utils/ui";
+import { PillarNav } from "./pillar-nav";
 
 export function EditorHeader() {
 	return (
 		<header className="bg-background flex h-[3.4rem] items-center justify-between px-3 pt-0.5">
 			<div className="flex items-center gap-1">
 				<ProjectDropdown />
+				<PillarNav />
 				<EditableProjectName />
 			</div>
 			<nav className="flex items-center gap-2">
@@ -60,7 +62,7 @@ function ProjectDropdown() {
 			console.error("Failed to prepare project exit:", error);
 		} finally {
 			editor.project.closeProject();
-			router.push("/projects");
+			router.push("/editor/projects");
 		}
 	};
 
@@ -92,7 +94,7 @@ function ProjectDropdown() {
 				await editor.project.deleteProjects({
 					ids: [activeProject.metadata.id],
 				});
-				router.push("/projects");
+				router.push("/editor/projects");
 			} catch (error) {
 				toast.error("Failed to delete project", {
 					description:
